@@ -1,0 +1,31 @@
+---
+title: "TH JP Notebook"
+output: html_notebook
+---
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+```{r}
+## analysis between two cultures 
+
+data.jp <- read.csv("MergeJP_all_data.csv")
+data.th <- read.csv("MergeTh_all_data.csv")
+
+# change column names
+colnames(data.jp) <- c("Rating","Animation","HRV_LFHF_mean",
+                           "HRV_LFHF_std","id","Avatar")
+colnames(data.th) <- c("Rating","Animation","HRV_LFHF_mean",
+                       "HRV_LFHF_std","id","Avatar")
+
+data.jp$country <- "JP"
+data.th$country <- "TH"
+```
+
+```{r}
+anova_model <- aov_ez(id = "id", dv = "Rating", 
+                      within = c("Animation", "Avatar"), 
+                      data = data.rating)
+```
+
+
