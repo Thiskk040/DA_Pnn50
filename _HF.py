@@ -7,14 +7,13 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('Raw_ECG/0000/Ecgsubject_0000_task1_0-1_timeadjusted.csv')
 raw = df["ecg"]
 
-# Sampling rate of polar in Hz
-_SAMPLING_RATE = 130
-
-# Sample the data every _SAMPLING_STEP = n steps
+# Sampling rate of polar in Hz 130
+_SAMPLING_RATE = 50
+# Sample the data every _SAMPLING_STEP = n steps 5
 _SAMPLING_STEP = 5
 
-# Sampling Rate is 130Hz >> 30 Sec = chunksize of 7800
-chunksize = 5000
+# Sampling Rate is 130Hz >> 30 Sec = chunksize of 5000
+chunksize = 1000
 
 
 def chnk(lst, n):
